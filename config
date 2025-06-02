@@ -1,0 +1,30 @@
+# --- THEME ---
+theme = "catppuccin-mocha"
+
+# --- FONT ---
+font-family = "Comic Shanns Mono Nerd Font"
+font-size = 13
+
+# --- TRANSPARENCY ---
+background-opacity = 0.85
+background-blur-radius = 30
+
+
+# --- CURSOR ---
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+
+# extras
+shell-integration-features = true
+focus-follows-mouse = true
+link-url = true
+
+#keybindings
+
+# Navigate between splits
+keybind = ctrl+[=goto_split:left
+keybind = ctrl+]=goto_split:right
+keybind = ctrl+up=goto_split:top
+keybind = ctrl+down=goto_split:bottom
