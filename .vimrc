@@ -2,67 +2,46 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-" PLUGINS ----------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
- " Auto Pairs
-  Plug 'jiangmiao/auto-pairs'
 
-  " Linting & File Navigation
-  Plug 'dense-analysis/ale'
-  Plug 'preservim/nerdtree'
-  
-  " UI Enhancements
-  Plug 'itchyny/lightline.vim'
-  "Plugin 'vim-airline/vim-airline-themes'
-
-  Plug 'catppuccin/vim', { 'as': 'catppuccin' } 
-  let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'filetype', 'charvaluehex' ] ]
-      \ },
-      \ 'component': {
-      \   'charvaluehex': '0x%B'
-      \ },
-      \ }
-  
-  " Search & Navigation
-  Plug 'junegunn/fzf' " Fuzzy finder
-  Plug 'tpope/vim-fugitive' " Git integration
-
-  " Snippets
-  Plug 'SirVer/ultisnips' " Snippet engine
-  Plug 'honza/vim-snippets' " Predefined snippets
+" Plugins
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'junegunn/fzf'
+Plug 'tpope/vim-fugitive'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
-" THEME ------------------------------------------------------------------
+" THEME --------------------------
 set termguicolors
+syntax enable
 colorscheme catppuccin_mocha
+let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts = 2
 
-" STATUS LINE ------------------------------------------------------------
+" UI -----------------------------
 set laststatus=2
-set statusline=%F\ %M\ %Y\ %R
-set statusline+=%=
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set number
+set relativenumber
+set cursorline
 
-" GENERAL SETTINGS -------------------------------------------------------
-vnoremap <C-c> :w !xsel --clipboard --input<CR>
-set termguicolors
+" General ------------------------
 set nocompatible
 set noshowmode
 filetype plugin indent on
 syntax on
-set number
-set relativenumber
-set rnu
-set cursorline
 set shiftwidth=4
 set tabstop=4
 set expandtab
 set wrap
+set timeoutlen=500
+set ttimeoutlen=50
 set scrolloff=10
 set ignorecase
 set smartcase
@@ -74,15 +53,16 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" SNIPPET CONFIG ---------------------------------------------------------
+" Snippets -----------------------
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-" Custom Keybindings
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-l> :tabnext<CR>
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-w> :tabclose<CR>
-nnoremap <C-f> :FZF<CR>
+" Keymaps ------------------------
+let mapleader = " "
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>l :tabnext<CR>
+nnoremap <leader>h :tabprevious<CR>
+nnoremap <leader>w :tabclose<CR>
+nnoremap <leader>f :FZF<CR>
