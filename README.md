@@ -1,6 +1,4 @@
 # config
 
 
-Here is my confing
-
-I use this for only git clone
+Here is all my config 
